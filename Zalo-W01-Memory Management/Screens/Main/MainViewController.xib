@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+            <connections>
+                <outlet property="mStackView" destination="oFQ-Db-hdb" id="7qX-bw-ke3"/>
+                <outlet property="view" destination="Iag-oh-Jgh" id="bwt-La-8Rw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Iag-oh-Jgh">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oFQ-Db-hdb">
+                    <rect key="frame" x="10" y="44" width="394" height="818"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7na-Sa-SAW" firstAttribute="trailing" secondItem="oFQ-Db-hdb" secondAttribute="trailing" constant="10" id="1yq-uJ-kGP"/>
+                <constraint firstItem="oFQ-Db-hdb" firstAttribute="top" secondItem="7na-Sa-SAW" secondAttribute="top" id="N0a-Hn-ysS"/>
+                <constraint firstItem="oFQ-Db-hdb" firstAttribute="top" secondItem="7na-Sa-SAW" secondAttribute="top" id="bxt-GJ-3RW"/>
+                <constraint firstItem="oFQ-Db-hdb" firstAttribute="bottom" secondItem="7na-Sa-SAW" secondAttribute="bottom" id="j1s-KI-pzv"/>
+                <constraint firstItem="oFQ-Db-hdb" firstAttribute="leading" secondItem="7na-Sa-SAW" secondAttribute="leading" constant="10" id="s45-wn-r2J"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="7na-Sa-SAW"/>
+            <point key="canvasLocation" x="50.724637681159422" y="142.63392857142856"/>
+        </view>
+    </objects>
+</document>

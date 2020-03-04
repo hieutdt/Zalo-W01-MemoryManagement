@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		E7253907240F7657000F7308 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253906240F7657000F7308 /* AppDelegate.m */; };
 		E725390A240F7657000F7308 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253909240F7657000F7308 /* SceneDelegate.m */; };
-		E725390D240F7657000F7308 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E725390C240F7657000F7308 /* ViewController.m */; };
-		E7253910240F7657000F7308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E725390E240F7657000F7308 /* Main.storyboard */; };
 		E7253912240F7658000F7308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7253911240F7658000F7308 /* Assets.xcassets */; };
 		E7253915240F7658000F7308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7253913240F7658000F7308 /* LaunchScreen.storyboard */; };
 		E7253918240F7658000F7308 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253917240F7658000F7308 /* main.m */; };
+		E7253920240F7796000F7308 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E725391F240F7796000F7308 /* MainViewController.mm */; };
+		E7253922240F795F000F7308 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7253921240F795F000F7308 /* MainViewController.xib */; };
+		E7E8ACDB240F829E008B73AB /* SafeMutableArray.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,13 +23,15 @@
 		E7253906240F7657000F7308 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E7253908240F7657000F7308 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		E7253909240F7657000F7308 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		E725390B240F7657000F7308 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E725390C240F7657000F7308 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E725390F240F7657000F7308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7253911240F7658000F7308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7253914240F7658000F7308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7253916240F7658000F7308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7253917240F7658000F7308 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E725391E240F7796000F7308 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		E725391F240F7796000F7308 /* MainViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
+		E7253921240F795F000F7308 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		E7E8ACD9240F829E008B73AB /* SafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeMutableArray.h; sourceTree = "<group>"; };
+		E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SafeMutableArray.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,19 +64,45 @@
 		E7253904240F7657000F7308 /* Zalo-W01-Memory Management */ = {
 			isa = PBXGroup;
 			children = (
+				E7E8ACD7240F825C008B73AB /* Models */,
+				E7E8ACD5240F8241008B73AB /* Screens */,
 				E7253905240F7657000F7308 /* AppDelegate.h */,
 				E7253906240F7657000F7308 /* AppDelegate.m */,
 				E7253908240F7657000F7308 /* SceneDelegate.h */,
 				E7253909240F7657000F7308 /* SceneDelegate.m */,
-				E725390B240F7657000F7308 /* ViewController.h */,
-				E725390C240F7657000F7308 /* ViewController.m */,
-				E725390E240F7657000F7308 /* Main.storyboard */,
 				E7253911240F7658000F7308 /* Assets.xcassets */,
 				E7253913240F7658000F7308 /* LaunchScreen.storyboard */,
 				E7253916240F7658000F7308 /* Info.plist */,
 				E7253917240F7658000F7308 /* main.m */,
 			);
 			path = "Zalo-W01-Memory Management";
+			sourceTree = "<group>";
+		};
+		E7E8ACD5240F8241008B73AB /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E7E8ACD6240F824E008B73AB /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E7E8ACD6240F824E008B73AB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E725391E240F7796000F7308 /* MainViewController.h */,
+				E725391F240F7796000F7308 /* MainViewController.mm */,
+				E7253921240F795F000F7308 /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E7E8ACD7240F825C008B73AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7E8ACD9240F829E008B73AB /* SafeMutableArray.h */,
+				E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +163,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7253915240F7658000F7308 /* LaunchScreen.storyboard in Resources */,
+				E7253922240F795F000F7308 /* MainViewController.xib in Resources */,
 				E7253912240F7658000F7308 /* Assets.xcassets in Resources */,
-				E7253910240F7657000F7308 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,24 +175,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E725390D240F7657000F7308 /* ViewController.m in Sources */,
 				E7253907240F7657000F7308 /* AppDelegate.m in Sources */,
+				E7E8ACDB240F829E008B73AB /* SafeMutableArray.mm in Sources */,
 				E7253918240F7658000F7308 /* main.m in Sources */,
 				E725390A240F7657000F7308 /* SceneDelegate.m in Sources */,
+				E7253920240F7796000F7308 /* MainViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E725390E240F7657000F7308 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E725390F240F7657000F7308 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E7253913240F7658000F7308 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

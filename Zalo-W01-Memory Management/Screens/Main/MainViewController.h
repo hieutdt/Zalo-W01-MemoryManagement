@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  Zalo-W01-Memory Management
 //
 //  Created by CPU12163 on 3/4/20.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MainViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
