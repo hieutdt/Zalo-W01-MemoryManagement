@@ -22,12 +22,27 @@
     
     SafeMutableArray *array = [[SafeMutableArray alloc] initWithArray:@[@"Alo", @"Hello", @"This is my room"]];
     
-    for (int i = 0; i < array.count; i++) {
-        UILabel *label = [[UILabel alloc] init];
-        label.text = [array objectAtIndex:i];
+    NSThread *thread = [[NSThread alloc] initWithBlock:^{
+        for (int i  = 0; i < 100; i++) {
+            [array addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+    }];
+    
+    NSThread *secondThread = [[NSThread alloc] initWithBlock:^{
+        for (int i = 101; i < 200; i++) {
+            [array addObject:[NSString stringWithFormat:@"%d", i]];
+        }
         
-        [mStackView addArrangedSubview:label];
-    }
+        for (int i = 0; i < array.count; i++) {
+            NSLog(@"TON HIEU: %@", [array objectAtIndex:i]);
+        }
+    }];
+    
+    [thread start];
+    [secondThread start];
 }
+
+
+
 
 @end

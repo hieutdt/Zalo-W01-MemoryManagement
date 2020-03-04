@@ -89,11 +89,20 @@
 }
 
 - (id)objectAtIndex:(NSInteger)index {
-    // This function cannot be synchonize
-    if (index < mArray.count) {
-        return [mArray objectAtIndex:index];
-    }
-    return nil;
+    __block id obj;
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_sync(concurrentQueue, ^{
+        obj = [mArray objectAtIndex:index];
+    });
+    
+    return obj;
+}
+
+- (void)removeAllObjects {
+    dispatch_queue_t queue = dispatch_queue_create("remove_all_objects_queue", nullptr);
+    dispatch_sync(queue, ^{
+        [mArray removeAllObjects];
+    }); 
 }
 
 @end
