@@ -12,8 +12,8 @@
 @interface MainViewController () {
     __weak IBOutlet UIStackView *mStackView;
     
-    NSMutableArray* nextPositions;
-    NSMutableArray* currentPositions;
+    NSMutableArray *mArray;
+    SafeMutableArray *mSafeArray;
 }
 
 @end
@@ -23,16 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    nextPositions = [[NSMutableArray alloc] init];
-    currentPositions = [[NSMutableArray alloc] init];
+    mArray = [[NSMutableArray alloc] init];
+    mSafeArray = [[SafeMutableArray alloc] init];
     
-    [self compute];
-}
-
-- (void)compute {
-    NSMutableArray* tmp = nextPositions;
-    nextPositions = currentPositions;
-    currentPositions = tmp;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    for (int i = 0; i < 1000; i++) {
+        dispatch_async(queue, ^{
+            NSLog(@"Add the first %d", i);
+//            [self->mArray addObject:[NSString stringWithFormat:@"%d", i]];
+            [self->mSafeArray addObject:[NSString stringWithFormat:@"%d", i]];
+        });
+        
+        dispatch_async(queue, ^{
+            NSLog(@"Remove the first %d", i);
+//            [self->mArray removeObjectAtIndex:i];
+        });
+    }
 }
 
 

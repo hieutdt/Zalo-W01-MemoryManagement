@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SafeMutableArray : NSObject
 
-@property (nonatomic, readonly) unsigned long count;
-
 - (instancetype)initWithArray:(NSArray*)array;
 - (instancetype)initWithCapacity:(NSInteger)capacity;
 - (instancetype)initWithContentsOfURL:(NSURL*)url;
@@ -21,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addObject:(id)object;
 - (id)objectAtIndex:(NSInteger)index;
+- (void)removeAllObjects;
+- (void)removeObjectAtIndex:(NSInteger)index;
+- (int)count;
 
 @end
 
