@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController : UIViewController
 
+@property (nonatomic) NSThread *searchThread;
+
 @end
 
 NS_ASSUME_NONNULL_END

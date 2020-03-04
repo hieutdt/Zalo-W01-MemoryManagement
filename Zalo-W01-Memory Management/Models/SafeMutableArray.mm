@@ -102,7 +102,18 @@
     dispatch_queue_t queue = dispatch_queue_create("remove_all_objects_queue", nullptr);
     dispatch_sync(queue, ^{
         [mArray removeAllObjects];
-    }); 
+        mCount = mArray.count;
+    });
 }
+
+- (void)insertObject:(id)anObject atIndex:(NSUInteger)index {
+    dispatch_queue_t queue = dispatch_queue_create("insert_obj_at_index", nullptr);
+    dispatch_sync(queue, ^{
+        [mArray insertObject:anObject atIndex:index];
+        mCount = mArray.count;
+    });
+}
+ 
+
 
 @end
