@@ -24,7 +24,7 @@
     mArray = [[NSMutableArray alloc] init];
     mSafeArray = [[SafeMutableArray alloc] init];
     
-    dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t queue = dispatch_queue_create("concurrent_queue", DISPATCH_QUEUE_CONCURRENT);
     
     for (int i = 0; i < 1000; i++) {
         dispatch_async(queue, ^{
