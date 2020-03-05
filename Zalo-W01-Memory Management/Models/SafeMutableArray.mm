@@ -10,6 +10,7 @@
 
 @interface SafeMutableArray() {
     NSMutableArray *mArray;
+    dispatch_queue_t mSyncQueue;
 }
 
 @end
@@ -22,6 +23,7 @@
     self = [super init];
     if (self) {
         mArray = [[NSMutableArray alloc] init];
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -29,9 +31,9 @@
 - (instancetype)initWithArray:(NSArray*)array {
     self = [super init];
     if (self) {
-        dispatch_queue_t queue = dispatch_queue_create("init_array_queue", nullptr);
-        dispatch_sync(queue, ^{
-            mArray = [[NSMutableArray alloc] initWithArray:array];
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_barrier_async(mSyncQueue, ^{
+            self->mArray = [[NSMutableArray alloc] initWithArray:array];
         });
     }
     return self;
@@ -40,9 +42,9 @@
 - (instancetype)initWithCapacity:(NSInteger)capacity {
     self = [super init];
     if (self) {
-        dispatch_queue_t queue = dispatch_queue_create("init_array_queue", nullptr);
-        dispatch_sync(queue,^{
-            mArray = [[NSMutableArray alloc] initWithCapacity:capacity];
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_barrier_async(mSyncQueue, ^{
+            self->mArray = [[NSMutableArray alloc] initWithCapacity:capacity];
         });
     }
     return self;
@@ -51,9 +53,9 @@
 - (instancetype)initWithContentsOfURL:(NSURL*)url {
     self = [super init];
     if (self) {
-        dispatch_queue_t queue = dispatch_queue_create("init_array_queue", nullptr);
-        dispatch_sync(queue, ^{
-            mArray = [[NSMutableArray alloc] initWithContentsOfURL:url];
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_barrier_async(mSyncQueue, ^{
+            self->mArray = [[NSMutableArray alloc] initWithContentsOfURL:url];
         });
     }
     return self;
@@ -62,9 +64,9 @@
 - (instancetype)initWithContentsOfFile:(NSString*)path {
     self = [super init];
     if (self) {
-        dispatch_queue_t queue = dispatch_queue_create("init_array_queue", nullptr);
-        dispatch_sync(queue, ^{
-            mArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_barrier_async(mSyncQueue, ^{
+            self->mArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
         });
     }
     return self;
@@ -74,48 +76,82 @@
 
 - (void)addObject:(id)object {
     if (object) {
-        dispatch_queue_t queue = dispatch_queue_create("add_object_to_array_queue", nullptr);
-        dispatch_sync(queue, ^{
-            [mArray addObject:object];
+        dispatch_barrier_async(mSyncQueue, ^{
+            [self->mArray addObject:object];
         });
     }
 }
 
 - (id)objectAtIndex:(NSInteger)index {
     __block id obj;
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_sync(concurrentQueue, ^{
-        obj = [mArray objectAtIndex:index];
+    dispatch_sync(mSyncQueue, ^{
+        unsigned long count = mArray.count;
+        obj = index < count ? [mArray objectAtIndex:index] : nil;
     });
     
     return obj;
 }
 
 - (void)removeAllObjects {
-    dispatch_queue_t queue = dispatch_queue_create("remove_all_objects_queue", nullptr);
-    dispatch_sync(queue, ^{
-        [mArray removeAllObjects];
+    dispatch_barrier_async(mSyncQueue, ^{
+        [self->mArray removeAllObjects];
     });
 }
 
 - (void)removeObjectAtIndex:(NSInteger)index {
-    dispatch_queue_t queue = dispatch_queue_create("remove_object_at_index", nullptr);
-    dispatch_sync(queue, ^{
-        [mArray removeObjectAtIndex:index];
+    dispatch_barrier_async(mSyncQueue, ^{
+        unsigned long count = self->mArray.count;
+        if (index < count) {
+            [self->mArray removeObjectAtIndex:index];
+        }
+    });
+}
+
+- (void)removeLastObject {
+    dispatch_barrier_async(mSyncQueue, ^{
+        [self->mArray removeLastObject];
+    });
+}
+
+- (void)removeObject:(id)anObject inRange:(NSRange)range {
+    dispatch_barrier_async(mSyncQueue, ^{
+        if (!anObject)
+            return;
+        
+        [self->mArray removeObject:anObject inRange:range];
+    });
+}
+
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
+    dispatch_barrier_async(mSyncQueue, ^{
+        unsigned long count = self->mArray.count;
+        if (!anObject)
+            return;
+        
+        if (index >= count)
+            return;
+        
+        [self->mArray replaceObjectAtIndex:index withObject:anObject];
     });
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index {
-    dispatch_queue_t queue = dispatch_queue_create("insert_obj_at_index", nullptr);
-    dispatch_sync(queue, ^{
-        [mArray insertObject:anObject atIndex:index];
+    dispatch_barrier_async(mSyncQueue, ^{
+        if (!anObject)
+            return;
+        
+        if (index < self->mArray.count) {
+            [self->mArray insertObject:anObject atIndex:index];
+        }
     });
 }
 
-- (int)count {
-    if (mArray)
-        return (int)mArray.count;
-    return 0;
+- (unsigned long)count {
+    __block unsigned long count = 0;
+    dispatch_sync(mSyncQueue, ^{
+        count = mArray.count;
+    });
+    return count;
 }
 
 #pragma mark - Wrapper methods
@@ -123,13 +159,20 @@
 - (instancetype)initWithMutableArray:(NSMutableArray*)mutableArray {
     self = [super init];
     if (self)  {
-        mArray = mutableArray;
+        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_barrier_async(mSyncQueue, ^{
+            self->mArray = [NSMutableArray arrayWithArray:mutableArray];
+        });
     }
     return self;
 }
- 
+
 - (NSMutableArray*)mutableArray {
-    return mArray;
+    __block NSMutableArray *array;
+    dispatch_sync(mSyncQueue, ^{
+        array = mArray;
+    });
+    return array;
 }
 
 @end

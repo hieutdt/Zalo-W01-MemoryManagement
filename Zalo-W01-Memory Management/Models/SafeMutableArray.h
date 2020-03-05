@@ -21,7 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)objectAtIndex:(NSInteger)index;
 - (void)removeAllObjects;
 - (void)removeObjectAtIndex:(NSInteger)index;
-- (int)count;
+- (void)removeObject:(id)anObject inRange:(NSRange)range;
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject;
+- (unsigned long)count;
 
 @end
 

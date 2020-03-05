@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
-                <outlet property="mStackView" destination="oFQ-Db-hdb" id="7qX-bw-ke3"/>
                 <outlet property="view" destination="Iag-oh-Jgh" id="bwt-La-8Rw"/>
             </connections>
         </placeholder>
@@ -18,17 +17,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oFQ-Db-hdb">
-                    <rect key="frame" x="10" y="44" width="394" height="818"/>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zalo Week 01: Memory Management" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKO-hI-WiG">
+                    <rect key="frame" x="47.5" y="441" width="319" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="7na-Sa-SAW" firstAttribute="trailing" secondItem="oFQ-Db-hdb" secondAttribute="trailing" constant="10" id="1yq-uJ-kGP"/>
-                <constraint firstItem="oFQ-Db-hdb" firstAttribute="top" secondItem="7na-Sa-SAW" secondAttribute="top" id="N0a-Hn-ysS"/>
-                <constraint firstItem="oFQ-Db-hdb" firstAttribute="top" secondItem="7na-Sa-SAW" secondAttribute="top" id="bxt-GJ-3RW"/>
-                <constraint firstItem="oFQ-Db-hdb" firstAttribute="bottom" secondItem="7na-Sa-SAW" secondAttribute="bottom" id="j1s-KI-pzv"/>
-                <constraint firstItem="oFQ-Db-hdb" firstAttribute="leading" secondItem="7na-Sa-SAW" secondAttribute="leading" constant="10" id="s45-wn-r2J"/>
+                <constraint firstItem="jKO-hI-WiG" firstAttribute="centerX" secondItem="7na-Sa-SAW" secondAttribute="centerX" id="8uU-hB-1l3"/>
+                <constraint firstItem="jKO-hI-WiG" firstAttribute="centerY" secondItem="7na-Sa-SAW" secondAttribute="centerY" id="Qf8-h4-3f8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="7na-Sa-SAW"/>
             <point key="canvasLocation" x="50.724637681159422" y="142.63392857142856"/>

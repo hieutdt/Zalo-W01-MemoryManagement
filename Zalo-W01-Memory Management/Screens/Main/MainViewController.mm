@@ -10,8 +10,6 @@
 #import "SafeMutableArray.h"
 
 @interface MainViewController () {
-    __weak IBOutlet UIStackView *mStackView;
-    
     NSMutableArray *mArray;
     SafeMutableArray *mSafeArray;
 }
@@ -26,7 +24,7 @@
     mArray = [[NSMutableArray alloc] init];
     mSafeArray = [[SafeMutableArray alloc] init];
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
     
     for (int i = 0; i < 1000; i++) {
         dispatch_async(queue, ^{
@@ -38,9 +36,9 @@
         dispatch_async(queue, ^{
             NSLog(@"Remove the first %d", i);
 //            [self->mArray removeObjectAtIndex:i];
+            [self->mSafeArray removeObjectAtIndex:i];
         });
     }
 }
-
 
 @end
