@@ -19,19 +19,25 @@
 
 #pragma mark - Constructions
 
-- (instancetype)init {
+- (instancetype)initCommon {
     self = [super init];
     if (self) {
-        mArray = [[NSMutableArray alloc] init];
         mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
 
-- (instancetype)initWithArray:(NSArray*)array {
-    self = [super init];
+- (instancetype)init {
+    self = [self initCommon];
     if (self) {
-        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        mArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (instancetype)initWithArray:(NSArray*)array {
+    self = [self initCommon];
+    if (self) {
         dispatch_barrier_async(mSyncQueue, ^{
             self->mArray = [[NSMutableArray alloc] initWithArray:array];
         });
@@ -40,9 +46,8 @@
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
-    self = [super init];
+    self = [self initCommon];
     if (self) {
-        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         dispatch_barrier_async(mSyncQueue, ^{
             self->mArray = [[NSMutableArray alloc] initWithCapacity:capacity];
         });
@@ -51,9 +56,8 @@
 }
 
 - (instancetype)initWithContentsOfURL:(NSURL*)url {
-    self = [super init];
+    self = [self initCommon];
     if (self) {
-        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         dispatch_barrier_async(mSyncQueue, ^{
             self->mArray = [[NSMutableArray alloc] initWithContentsOfURL:url];
         });
@@ -62,9 +66,8 @@
 }
 
 - (instancetype)initWithContentsOfFile:(NSString*)path {
-    self = [super init];
+    self = [self initCommon];
     if (self) {
-        mSyncQueue = dispatch_queue_create("SafeMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         dispatch_barrier_async(mSyncQueue, ^{
             self->mArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
         });
@@ -72,14 +75,21 @@
     return self;
 }
 
+#pragma mark - Destructor
+
+- (void)dealloc {
+    if (mSyncQueue) {
+        mSyncQueue = nullptr;
+    }
+}
+
 #pragma mark - MutableArray methods
 
 - (void)addObject:(id)object {
-    if (object) {
-        dispatch_barrier_async(mSyncQueue, ^{
+    dispatch_barrier_async(mSyncQueue, ^{
+        if (object)
             [self->mArray addObject:object];
-        });
-    }
+    });
 }
 
 - (id)objectAtIndex:(NSInteger)index {

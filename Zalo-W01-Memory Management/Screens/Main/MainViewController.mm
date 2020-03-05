@@ -24,20 +24,19 @@
     mArray = [[NSMutableArray alloc] init];
     mSafeArray = [[SafeMutableArray alloc] init];
     
-    dispatch_queue_t queue = dispatch_queue_create("concurrent_queue", DISPATCH_QUEUE_CONCURRENT);
-    
-    for (int i = 0; i < 1000; i++) {
-        dispatch_async(queue, ^{
-            NSLog(@"Add the first %d", i);
-//            [self->mArray addObject:[NSString stringWithFormat:@"%d", i]];
-            [self->mSafeArray addObject:[NSString stringWithFormat:@"%d", i]];
-        });
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         
-        dispatch_async(queue, ^{
-            NSLog(@"Remove the first %d", i);
-//            [self->mArray removeObjectAtIndex:i];
-            [self->mSafeArray removeObjectAtIndex:i];
+    for (int i = 0; i < 10; i++) {
+        dispatch_sync(queue, ^{
+            [self->mSafeArray addObject:[NSString stringWithFormat:@"Element %d", i + 1]];
         });
+    }
+    
+    sleep(5);
+    
+    NSLog(@"Print array:");
+    for (int i = 0; i < [mSafeArray count]; i++) {
+        NSLog(@"Array[%d] = %@", i, [mSafeArray objectAtIndex:i]);
     }
 }
 
