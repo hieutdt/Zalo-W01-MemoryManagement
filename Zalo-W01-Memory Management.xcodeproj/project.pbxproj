@@ -15,8 +15,23 @@
 		E7253918240F7658000F7308 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253917240F7658000F7308 /* main.m */; };
 		E7253920240F7796000F7308 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E725391F240F7796000F7308 /* MainViewController.mm */; };
 		E7253922240F795F000F7308 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7253921240F795F000F7308 /* MainViewController.xib */; };
+		E7BCE9CF2411EE33007CD160 /* MutableArrayThreadSafeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BCE9C52411EDAA007CD160 /* MutableArrayThreadSafeTests.m */; };
+		E7BCE9D02411EEC5007CD160 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253909240F7657000F7308 /* SceneDelegate.m */; };
+		E7BCE9D12411EEC8007CD160 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7253906240F7657000F7308 /* AppDelegate.m */; };
+		E7BCE9D22411EECA007CD160 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E725391F240F7796000F7308 /* MainViewController.mm */; };
+		E7BCE9D32411EECE007CD160 /* SafeMutableArray.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */; };
 		E7E8ACDB240F829E008B73AB /* SafeMutableArray.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7BCE9C82411EDAA007CD160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E72538FA240F7657000F7308 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7253901240F7657000F7308;
+			remoteInfo = "Zalo-W01-Memory Management";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		19FBF4E77C5F3A6850E3A7F4 /* Pods-Zalo-W01-Memory Management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zalo-W01-Memory Management.release.xcconfig"; path = "Target Support Files/Pods-Zalo-W01-Memory Management/Pods-Zalo-W01-Memory Management.release.xcconfig"; sourceTree = "<group>"; };
@@ -34,6 +49,9 @@
 		E725391E240F7796000F7308 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E725391F240F7796000F7308 /* MainViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		E7253921240F795F000F7308 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		E7BCE9C32411EDAA007CD160 /* MutableArrayThreadSafeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MutableArrayThreadSafeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7BCE9C52411EDAA007CD160 /* MutableArrayThreadSafeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MutableArrayThreadSafeTests.m; sourceTree = "<group>"; };
+		E7BCE9C72411EDAA007CD160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7E8ACD9240F829E008B73AB /* SafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeMutableArray.h; sourceTree = "<group>"; };
 		E7E8ACDA240F829E008B73AB /* SafeMutableArray.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SafeMutableArray.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,6 +62,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				635687542249C1BC25E43349 /* Pods_Zalo_W01_Memory_Management.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7BCE9C02411EDAA007CD160 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E7253904240F7657000F7308 /* Zalo-W01-Memory Management */,
+				E7BCE9C42411EDAA007CD160 /* MutableArrayThreadSafeTests */,
 				E7253903240F7657000F7308 /* Products */,
 				74F6B621526DD1EA8E749E9B /* Pods */,
 				68BD135CE0034315B9DAEEF2 /* Frameworks */,
@@ -81,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E7253902240F7657000F7308 /* Zalo-W01-Memory Management.app */,
+				E7BCE9C32411EDAA007CD160 /* MutableArrayThreadSafeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +127,15 @@
 				E7253917240F7658000F7308 /* main.m */,
 			);
 			path = "Zalo-W01-Memory Management";
+			sourceTree = "<group>";
+		};
+		E7BCE9C42411EDAA007CD160 /* MutableArrayThreadSafeTests */ = {
+			isa = PBXGroup;
+			children = (
+				E7BCE9C52411EDAA007CD160 /* MutableArrayThreadSafeTests.m */,
+				E7BCE9C72411EDAA007CD160 /* Info.plist */,
+			);
+			path = MutableArrayThreadSafeTests;
 			sourceTree = "<group>";
 		};
 		E7E8ACD5240F8241008B73AB /* Screens */ = {
@@ -150,6 +186,24 @@
 			productReference = E7253902240F7657000F7308 /* Zalo-W01-Memory Management.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E7BCE9C22411EDAA007CD160 /* MutableArrayThreadSafeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7BCE9CC2411EDAA007CD160 /* Build configuration list for PBXNativeTarget "MutableArrayThreadSafeTests" */;
+			buildPhases = (
+				E7BCE9BF2411EDAA007CD160 /* Sources */,
+				E7BCE9C02411EDAA007CD160 /* Frameworks */,
+				E7BCE9C12411EDAA007CD160 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7BCE9C92411EDAA007CD160 /* PBXTargetDependency */,
+			);
+			name = MutableArrayThreadSafeTests;
+			productName = MutableArrayThreadSafeTests;
+			productReference = E7BCE9C32411EDAA007CD160 /* MutableArrayThreadSafeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,6 +215,10 @@
 				TargetAttributes = {
 					E7253901240F7657000F7308 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					E7BCE9C22411EDAA007CD160 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = E7253901240F7657000F7308;
 					};
 				};
 			};
@@ -178,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				E7253901240F7657000F7308 /* Zalo-W01-Memory Management */,
+				E7BCE9C22411EDAA007CD160 /* MutableArrayThreadSafeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +249,13 @@
 				E7253915240F7658000F7308 /* LaunchScreen.storyboard in Resources */,
 				E7253922240F795F000F7308 /* MainViewController.xib in Resources */,
 				E7253912240F7658000F7308 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7BCE9C12411EDAA007CD160 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +299,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7BCE9BF2411EDAA007CD160 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7BCE9CF2411EE33007CD160 /* MutableArrayThreadSafeTests.m in Sources */,
+				E7BCE9D32411EECE007CD160 /* SafeMutableArray.mm in Sources */,
+				E7BCE9D22411EECA007CD160 /* MainViewController.mm in Sources */,
+				E7BCE9D02411EEC5007CD160 /* SceneDelegate.m in Sources */,
+				E7BCE9D12411EEC8007CD160 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7BCE9C92411EDAA007CD160 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7253901240F7657000F7308 /* Zalo-W01-Memory Management */;
+			targetProxy = E7BCE9C82411EDAA007CD160 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7253913240F7658000F7308 /* LaunchScreen.storyboard */ = {
@@ -393,6 +479,42 @@
 			};
 			name = Release;
 		};
+		E7BCE9CA2411EDAA007CD160 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MutableArrayThreadSafeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = zalo.hieutdt.MutableArrayThreadSafeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zalo-W01-Memory Management.app/Zalo-W01-Memory Management";
+			};
+			name = Debug;
+		};
+		E7BCE9CB2411EDAA007CD160 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MutableArrayThreadSafeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = zalo.hieutdt.MutableArrayThreadSafeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zalo-W01-Memory Management.app/Zalo-W01-Memory Management";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -410,6 +532,15 @@
 			buildConfigurations = (
 				E725391C240F7658000F7308 /* Debug */,
 				E725391D240F7658000F7308 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7BCE9CC2411EDAA007CD160 /* Build configuration list for PBXNativeTarget "MutableArrayThreadSafeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7BCE9CA2411EDAA007CD160 /* Debug */,
+				E7BCE9CB2411EDAA007CD160 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

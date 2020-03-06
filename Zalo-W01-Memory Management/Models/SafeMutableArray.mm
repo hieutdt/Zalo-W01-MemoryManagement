@@ -75,14 +75,6 @@
     return self;
 }
 
-#pragma mark - Destructor
-
-- (void)dealloc {
-    if (mSyncQueue) {
-        mSyncQueue = nullptr;
-    }
-}
-
 #pragma mark - MutableArray methods
 
 - (void)addObject:(id)object {

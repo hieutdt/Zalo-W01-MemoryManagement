@@ -20,23 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     mArray = [[NSMutableArray alloc] init];
     mSafeArray = [[SafeMutableArray alloc] init];
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        
-    for (int i = 0; i < 10; i++) {
-        dispatch_sync(queue, ^{
-            [self->mSafeArray addObject:[NSString stringWithFormat:@"Element %d", i + 1]];
-        });
-    }
+    dispatch_apply(1000, DISPATCH_APPLY_AUTO, ^(size_t t){
+        [self->mSafeArray addObject:[NSString stringWithFormat:@"%d", (int)t]];
+    });
     
-    sleep(5);
-    
-    NSLog(@"Print array:");
-    for (int i = 0; i < [mSafeArray count]; i++) {
-        NSLog(@"Array[%d] = %@", i, [mSafeArray objectAtIndex:i]);
+    NSLog(@"Print array");
+    for (int i = 0; i < mSafeArray.count; i++) {
+        NSLog(@"%@", [mSafeArray objectAtIndex:i]);
     }
 }
 
